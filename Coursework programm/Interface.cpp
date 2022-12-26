@@ -1,7 +1,28 @@
 #include "User.h"
 
-int Interface::GetReference() { cout << interface_reference_ << endl; return 0;}
-
+int Interface::SetReference() {
+	 vector<string> reference{"  Welcome to Kirill Galkin’s program-client ! To work with the program, it needs to pass",
+        "from 3 to 5 arguments. To show the help again, call the program without arguments or",
+        "with the long --help option.\nOption list:",
+        "  --help               Calls the help and closes the program. Call possible via short function -h.",
+        "  --server_address     Required option. Sets the server address value.",
+        "  --server_port        Optional option. Sets the server port value. The default value is 33333.",
+        "  --input_file         Required Option. Sets the absolute path of the source file.",
+		"  --output_file        Required Option. Sets the absolute path of the result file.",
+		"  --aut_file           Optional Option. Sets the absolute path of the authentication file.\nThe default value is /home/stud/test/.config/vclient.conf\n",
+		"For all options except -help, you must use a long version.",
+		"Examples of call options:",
+		"  --server_address 127.0.0.1",
+		"  --server_address=127.0.0.1\n",
+		"Thank you for using our program!"}; 
+	interface_reference_ = reference;
+	return 0;
+}
+int Interface::GetReference() { 
+for(auto& c : interface_reference_)
+	cout << c << endl; 
+return 0;
+}
 string Interface::GetServerAddress() { return server_address_; }
 string Interface::GetServerPort() { return server_port_; }
 string Interface::GetInputFile() { return input_data_file_; }
@@ -9,12 +30,13 @@ string Interface::GetOutputFile() { return output_data_file_; }
 string Interface::GetAutFile() { return aut_data_file_; }
 
 int Interface::ReceiveArguments(int argc, char* argv[]) {
+	SetReference();
     if (argc == 1) {
         GetReference();
 		exit(0);
 	}
     static struct option long_options[] = {
-        {"reference", 0, 0, 'h'},
+        {"help", 0, 0, 'h'},
         {"server_address", 1, 0, '0'},
         {"server_port", 1, 0, '1'},
         {"input_file", 1, 0, '2'},

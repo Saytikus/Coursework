@@ -23,8 +23,9 @@ using namespace CryptoPP;
 namespace fs = std::experimental::filesystem::v1;
 
 class Interface {
-    string interface_reference_ = "Потом напишу справку";
+    vector<string> interface_reference_;
     string server_address_, server_port_, input_data_file_, output_data_file_, aut_data_file_;
+	int SetReference();
 	int CheckServerAddress(const string server_address);
     int CheckServerPort(const string server_port);
     int CheckInputFile(const string input_data_file);
@@ -71,6 +72,12 @@ class User {
     vector<float> vector_;
     uint32_t calculation_number_;
     float calculation_result_;
+	int CheckServerAddress(const string server_address);
+    int CheckServerPort(const string server_port);
+    int CheckInputFile(const string input_data_file);
+    int CheckOutputFile(const string output_data_file);
+    int CheckAutFile(const string aut_data_file);
+    bool isNumber(const string str);
 public:
     User() = delete;
     User(Interface interface);
