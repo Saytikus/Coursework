@@ -8,10 +8,8 @@ int main(int argc, char* argv[]) {
         User user(interface); // Блок получения ID и пароля
         UserHandler handler;    //
         user.SetIdPassword(handler.GetAutDataFromFile(user.GetAutFile()));  //
-        //cout << "User id: " << user.GetId() << "\t" << "User password: " << user.GetPassword() << endl; // Тест
-        
+                
         user.SetVectorNumber(handler.GetVectorNumberFromFile(user.GetInputFile()));   // Блок получения числа всех векторов, размера 1 вектора и его элементов(все в двоичном формате)
-        //cout << "\tVector number: " << user.GetVectorNumber() << endl;    //Тест*/
         
         TCPclient client(user); // Блок авторизации
 		cout << "Autentification started..." << endl;
